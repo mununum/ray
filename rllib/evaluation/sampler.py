@@ -572,7 +572,7 @@ def _process_observations(
     to_eval = defaultdict(list)
     outputs = []
     large_batch_threshold = max(1000, rollout_fragment_length * 10) if \
-        rollout_fragment_length != float("inf") else 5000
+        rollout_fragment_length != float("inf") else 50000
 
     # For each environment.
     for env_id, agent_obs in unfiltered_obs.items():

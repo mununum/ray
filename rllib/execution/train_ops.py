@@ -137,6 +137,8 @@ class TrainTFMultiGPU:
             with self.workers.local_worker().tf_sess.as_default():
                 for policy_id in self.policies:
                     policy = self.workers.local_worker().get_policy(policy_id)
+                    if policy is None:
+                        continue
                     with tf.variable_scope(policy_id, reuse=tf.AUTO_REUSE):
                         if policy._state_inputs:
                             rnn_inputs = policy._state_inputs + [
